@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.mortise.litio": {
+      "version": "ssh://git@github.com/onovich/LitIO.git?path=/Assets/com.mortise.litio#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1dd4e7c678ba320fbcbc8a9d13760db2e78a202f"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.4",
       "depth": 1,
