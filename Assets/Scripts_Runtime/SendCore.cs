@@ -23,8 +23,9 @@ public static class SendCore {
         message.txt1 = txt1;
         message.txt2 = txt2;
 
-        var dst = new byte[1024];
+        // var dst = new byte[1024];
         var src = message.ToBytes();
+        byte[] dst = new byte[src.Length + 5];
 
         byte id = ProtocolDict.GetID(message);
         int length = src.Length;
@@ -33,7 +34,7 @@ public static class SendCore {
 
         ByteWriter.Write<int>(dst, length, ref offset);
         ByteWriter.Write<byte>(dst, id, ref offset);
-        ByteWriter.WriteArray<byte>(dst, src, ref offset);
+        Buffer.BlockCopy(src, 0, dst, offset, src.Length);
 
         Send.Invoke(dst);
     }
@@ -43,8 +44,9 @@ public static class SendCore {
         message.txt3 = txt3;
         message.txt4 = txt4;
 
-        var dst = new byte[1024];
+        // var dst = new byte[1024];
         var src = message.ToBytes();
+        byte[] dst = new byte[src.Length + 5];
 
         byte id = ProtocolDict.GetID(message);
         int length = src.Length;
@@ -53,7 +55,7 @@ public static class SendCore {
 
         ByteWriter.Write<int>(dst, length, ref offset);
         ByteWriter.Write<byte>(dst, id, ref offset);
-        ByteWriter.WriteArray<byte>(dst, src, ref offset);
+        Buffer.BlockCopy(src, 0, dst, offset, src.Length);
 
         Send.Invoke(dst);
     }
@@ -73,7 +75,9 @@ public static class SendCore {
 
             ByteWriter.Write<int>(dst, length, ref offset);
             ByteWriter.Write<byte>(dst, id, ref offset);
-            ByteWriter.WriteArray<byte>(dst, src, ref offset);
+            Buffer.BlockCopy(src, 0, dst, offset, src.Length);
+
+            offset += src.Length;
 
             Debug.Log("Send Message : ID: " + id + " Length: " + length + " Type: " + message.GetType().Name);
         }
