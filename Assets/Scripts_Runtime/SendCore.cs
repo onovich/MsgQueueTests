@@ -26,7 +26,6 @@ public static class SendCore {
 
         ByteWriter.Write<int>(dst, length, ref offset);
         ByteWriter.Write<byte>(dst, id, ref offset);
-        // ByteWriter.WriteArray<byte>(dst, src, ref offset);
         Buffer.BlockCopy(src, 0, dst, offset, src.Length);
 
         Send.Invoke(dst);
@@ -47,7 +46,6 @@ public static class SendCore {
 
         ByteWriter.Write<int>(dst, length, ref offset);
         ByteWriter.Write<byte>(dst, id, ref offset);
-        // ByteWriter.WriteArray<byte>(dst, src, ref offset);
         Buffer.BlockCopy(src, 0, dst, offset, src.Length);
 
         Send.Invoke(dst);
@@ -75,7 +73,7 @@ public static class SendCore {
 
             ByteWriter.Write<int>(all, length, ref offset);
             ByteWriter.Write<byte>(all, id, ref offset);
-            ByteWriter.WriteArray<byte>(all, bytes, ref offset);
+            Buffer.BlockCopy(bytes, 0, all, offset, bytes.Length);
 
             Debug.Log("Send Message : ID: " + id + " Length: " + length + " Type: " + message.GetType().Name);
         }

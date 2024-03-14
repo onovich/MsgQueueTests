@@ -57,16 +57,18 @@ public static class ReceiveCore {
         Test01ReqMessage message = new Test01ReqMessage();
         message.FromBytes(bytes, ref offset);
         string txt1 = message.txt1;
+        Debug.Log("Read Message : Txt1: " + txt1 + " Type: " + message.GetType().Name + " Bytes: " + BitConverter.ToString(bytes).Replace("-", " "));
         string txt2 = message.txt2;
-        Debug.Log("Read Message : Txt1: " + txt1 + " Txt2: " + txt2 + " Type: " + message.GetType().Name + " Bytes: " + BitConverter.ToString(bytes).Replace("-", " "));
+        Debug.Log("Read Message : Txt2: " + txt2 + " Type: " + message.GetType().Name + " Bytes: " + BitConverter.ToString(bytes).Replace("-", " "));
     }
 
     public static void ReadReq2(ReceiveContext receiveContext, byte[] bytes, ref int offset) {
         Test02ReqMessage message = new Test02ReqMessage();
         message.FromBytes(bytes, ref offset);
         string txt3 = message.txt3;
+        Debug.Log("Read Message : Txt3: " + txt3 + " Type: " + message.GetType().Name + " Bytes: " + BitConverter.ToString(bytes).Replace("-", " "));
         string txt4 = message.txt4;
-        Debug.Log("Read Message : Txt3: " + txt3 + " Txt4: " + txt4 + " Type: " + message.GetType().Name + " Bytes: " + BitConverter.ToString(bytes).Replace("-", " "));
+        Debug.Log("Read Message : Txt4: " + txt4 + " Type: " + message.GetType().Name + " Bytes: " + BitConverter.ToString(bytes).Replace("-", " "));
     }
 
 }
