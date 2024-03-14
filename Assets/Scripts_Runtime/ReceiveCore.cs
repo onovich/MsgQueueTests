@@ -22,6 +22,7 @@ public static class ReceiveCore {
         int offset = 0;
         int msgCount = ByteReader.Read<int>(bytes, ref offset);
 
+        // 读取全部消息
         for (int i = 0; i < msgCount; i++) {
             int length = ByteReader.Read<int>(bytes, ref offset);
             if (length == 0) {
@@ -31,6 +32,7 @@ public static class ReceiveCore {
             ReadMessage(receiveContext, id, bytes, ref offset);
         }
 
+        // 擦除缓冲区
         receiveContext.ClearBuffer();
 
     }
